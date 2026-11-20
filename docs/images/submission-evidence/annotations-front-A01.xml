@@ -1,0 +1,59 @@
+<image id="0" name="A01_bc5fadac-fa6dd225.jpg" width="1280" height="720">
+    <polyline label="lane" source="manual" occluded="0" points="702.60,718.10;409.04,503.11" z_order="0">
+      <attribute name="position">R1</attribute>
+      <attribute name="style">dashed</attribute>
+      <attribute name="color">white</attribute>
+      <attribute name="kind">single</attribute>
+    </polyline>
+    <polyline label="lane" source="manual" occluded="0" points="1279.30,704.40;460.75,509.36" z_order="0">
+      <attribute name="position">R2</attribute>
+      <attribute name="style">solid</attribute>
+      <attribute name="color">white</attribute>
+      <attribute name="kind">single</attribute>
+    </polyline>
+    <polygon label="drivable" source="manual" occluded="0" points="131.66,720.00;268.25,595.72;334.40,534.70;364.95,509.77;406.23,508.07;686.55,720.00" z_order="0">
+      <attribute name="area_type">direct</attribute>
+    </polygon>
+    <polygon label="drivable" source="manual" occluded="0" points="0.00,612.70;329.29,506.80;355.68,508.27;81.20,720.00;49.93,720.00;0.00,720.00;0.00,685.28" z_order="0">
+      <attribute name="area_type">direct</attribute>
+    </polygon>
+    <polyline label="lane" source="manual" occluded="0" points="108.80,719.50;366.39,502.89" z_order="0">
+      <attribute name="position">L1</attribute>
+      <attribute name="style">dashed</attribute>
+      <attribute name="color">white</attribute>
+      <attribute name="kind">single</attribute>
+    </polyline>
+    <box label="traffic_sign" source="manual" occluded="0" xtl="550.38" ytl="408.08" xbr="603.38" ybr="479.39" z_order="0">
+      <attribute name="group">information</attribute>
+      <attribute name="facing">front</attribute>
+      <attribute name="edge_zone">false</attribute>
+    </box>
+    <polyline label="lane" source="manual" occluded="0" points="0.00,603.57;331.90,503.80" z_order="0">
+      <attribute name="position">L2</attribute>
+      <attribute name="style">solid</attribute>
+      <attribute name="color">white</attribute>
+      <attribute name="kind">single</attribute>
+    </polyline>
+    <polygon label="drivable" source="manual" occluded="0" points="732.33,720.00;562.87,600.81;415.28,502.98;428.85,501.85;439.59,505.25;483.30,516.50;1280.00,714.07;1280.00,720.00" z_order="0">
+      <attribute name="area_type">direct</attribute>
+    </polygon>
+    <polyline label="lane" source="manual" occluded="0" points="0.00,598.66;332.62,503.58" z_order="0">
+      <attribute name="position">other</attribute>
+      <attribute name="style">solid</attribute>
+      <attribute name="color">white</attribute>
+      <attribute name="kind">single</attribute>
+    </polyline>
+    <tag label="camera" source="manual">
+      <attribute name="value">front</attribute>
+    </tag>
+    <tag label="weather" source="manual">
+      <attribute name="value">clear</attribute>
+    </tag>
+    <tag label="source" source="manual">
+      <attribute name="value">real</attribute>
+    </tag>
+    <tag label="timeofday" source="manual">
+      <attribute name="value">day</attribute>
+    </tag>
+  </image>
+  
