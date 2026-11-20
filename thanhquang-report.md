@@ -6,16 +6,16 @@ Phiên bản CVAT: 2.74.1 (API local `/api/server/about`)
 Guideline: Road v1.0  
 Lần nộp (`revision` trong manifest): 3
 Thời điểm tạo manifest revision 3: 20/11/2026 23:50:05 (UTC+7; từ `created_at` trong manifest).
-Số lần nộp lại sau Rework: 2 (revision 2 và revision 3; chưa có xác nhận cuối cùng của coach).
+Số lần nộp lại sau Rework: 2 (revision 2 và revision 3; đang chờ coach xác nhận kết quả sửa cuối).
 
-> Trạng thái: chưa thể xác nhận hồ sơ đã hoàn tất hoặc đạt điểm tối đa. Revision 3 ưu tiên xác nhận coach rằng A09 không có R1; position của lane này đã trở về `L1`, còn `style=dashed` và chỉnh sửa vạch đôi theo nhận xét QC1. LINT vẫn cảnh báo hai lane `L1` ở A09; cần người kiểm/coach xác nhận cách diễn giải. Còn sáu cảnh báo chính chưa xác minh và ảnh Project settings hợp lệ còn thiếu.
+> Trạng thái: các file đã đồng bộ revision 3. Sáu cảnh báo chính đã được rà bằng overlay; A08/A09 còn cần chốt cách diễn giải, còn B03/B06/B07 không có lệch lớn hiển nhiên nhưng chưa thể đo ngưỡng 5 px nếu thiếu GT. Ảnh Project Settings cần được lưu thành file đính kèm. Revision 3 giữ coach exception A09 không có R1; position của lane này là `L1`, cùng `style=dashed` và vạch đôi đã gộp. LINT vẫn cảnh báo hai lane `L1` ở A09.
 
 ## 1. Kiểm project
 
 | Mục | Trạng thái | Ghi chú |
 | --- | --- | --- |
 | Schema 6 label và 4 tag | Đã đối chiếu output `py -3.11 -m road_lab.taxonomy`, metadata của cả hai ZIP và Project Raw | Đây là bằng chứng cấu hình, không thay thế ảnh chụp trang Project Settings. |
-| Cấu hình trực tiếp trên Project | Đã kiểm tra Project #2 trong CVAT | `d11_road_NguyenThanhQuang` có sáu label và bốn tag; tab Constructor xác nhận danh sách, tab Raw xác nhận kiểu và thuộc tính như bảng dưới. Ảnh chụp màn hình rõ làm minh chứng vẫn còn thiếu. |
+| Cấu hình trực tiếp trên Project | Đã kiểm tra Project #2 trong CVAT | `d11_road_NguyenThanhQuang` có sáu label và bốn tag; tab Constructor xác nhận danh sách, tab Raw xác nhận kiểu và thuộc tính như bảng dưới. Cần lưu ảnh Project Settings để đính kèm làm minh chứng. |
 | Bốn tag trên ảnh | Đủ trên cả 20 ảnh | Đã đối chiếu XML export: mỗi ảnh có camera, timeofday, weather và source cùng giá trị. |
 
 | Label/tag | Kiểu và cấu hình theo metadata export |
@@ -47,7 +47,7 @@ Số liệu shape lấy từ `thanhquang-manifest.json`; ZIP hiện tại gồm 
 
 ## 3. Bảng ca khó
 
-Các dòng dưới đây là cảnh báo lint cần đối chiếu với ảnh/CVAT, không phải xác nhận rằng chúng là lỗi hoặc là các ca khó tôi đã gặp.
+Các dòng dưới đây ghi các ca đã đối chiếu bằng LINT và overlay; cảnh báo tự động không tự nó chứng minh có lỗi hoặc phản ánh trải nghiệm cá nhân.
 
 | Ảnh | Nhãn | Phân vân giữa | Đã chọn | Lý do / việc cần xác minh |
 | --- | --- | --- | --- | --- |
@@ -56,13 +56,13 @@ Các dòng dưới đây là cảnh báo lint cần đối chiếu với ảnh/C
 | A07 | lane | Thiếu L1 hay ảnh thật sự không thấy vạch | Coach xác nhận không thấy L1 | Không thêm nét; ngoại lệ QC1-02 được ghi ở mục 4. |
 | A09 | lane | Coach xác nhận R1 không nhìn thấy; QC1 nhận định có vạch R1 và hai nét vạch đôi | Revision 3 không gán R1; lane này là `L1/dashed`, vạch đôi là `L1/double` | Đã ưu tiên xác nhận coach về việc không có R1; LINT vẫn báo hai lane cùng `L1`, cần xác nhận vạch đứt có phải lane riêng hay không. |
 | A12 | lane | Thiếu L1 hay ảnh thật sự không thấy vạch | Coach xác nhận không thấy L1 | Không thêm nét; ngoại lệ QC1-02 được ghi ở mục 4. |
-| A08 | lane | Chiều polyline gần-ra-xa hay xa-ra-gần | Chưa xác minh | Còn cảnh báo QC1-04; hướng của đường gần ngang cần người kiểm xác nhận. |
-| A09 | lane | Hai polyline L2 có phải vạch đôi hay bị tách | Đã gộp thành một `L1/kind=double` theo QC1 | Sau khi khôi phục position của lane còn lại theo xác nhận coach, LINT báo hai lane `L1`; cần người kiểm xác nhận cấu hình cuối. |
+| A08 | lane#25 | Hướng vẽ của một nét gần ngang; nét lane hay vạch dừng | Đã rà ảnh gốc và overlay | Nét gần ngang ở vùng giao lộ; LINT báo hướng, còn phiếu QC đặt câu hỏi nó có phải vạch dừng không. Không đổi nhãn khi chưa chốt loại đối tượng. |
+| A09 | lane | Hai polyline L2 có phải vạch đôi hay bị tách | Đã rà ảnh gốc/overlay; revision 3 có `L1/kind=double` và `L1/dashed` | Coach xác nhận R1 không nhìn thấy, nhưng LINT vẫn báo hai lane cùng `L1`; cần người kiểm chốt cách diễn giải lane đứt. |
 | B06, B07 | lane | `position=other` cho camera fisheye bên | Đã kiểm tra | ZIP revision 1 đã có `other`; QC1 ghi khác nhưng không kèm hash để đối chiếu. |
 | B02–B05 | traffic_light / traffic_sign | `edge_zone` bật hay tắt | Đã bật theo gợi ý lint | Đã bật cho các box được cảnh báo và kiểm tra lại trong XML export. |
-| B03 | lane#1 | Có đủ điểm theo cung fisheye không | Chưa xác minh | LINT: chỉ 3 điểm; cần nhìn ảnh trước khi quyết định thêm điểm. |
-| B06 | road_curb#4 | Có đủ điểm theo cung fisheye không | Chưa xác minh | LINT: chỉ 3 điểm; cần nhìn ảnh trước khi quyết định thêm điểm. |
-| B07 | lane#4, lane#5 | Có đủ điểm theo cung fisheye không | Chưa xác minh | LINT: mỗi polyline chỉ 3 điểm; cần nhìn ảnh trước khi quyết định thêm điểm. |
+| B03 | lane#1 | Độ bám cung fisheye | Đã rà ảnh gốc và overlay; không thấy lệch lớn hiển nhiên | LINT chỉ đếm 3 điểm; không thể xác nhận sai số ≤5 px nếu thiếu GT. Không tự thêm điểm. |
+| B06 | road_curb#4 | Độ bám cung fisheye | Đã rà ảnh gốc và overlay; không thấy lệch lớn hiển nhiên | LINT chỉ đếm 3 điểm; không thể xác nhận sai số ≤5 px nếu thiếu GT. Không tự thêm điểm. |
+| B07 | lane#4, lane#5 | Độ bám cung fisheye | Đã rà ảnh gốc và overlay; không thấy lệch lớn hiển nhiên | Mỗi polyline có 3 điểm; LINT không đo độ lệch tới GT. Không tự thêm điểm. |
 
 ## 4. Phiếu QC 1 nhận được
 
@@ -81,22 +81,22 @@ Phiếu liệt kê 24 ô tag thiếu trong sáu ảnh mẫu, năm lỗi `positio
 
 | Mã | Số lỗi theo phiếu Đức | Đồng ý / đối chiếu với bộ hiện tại | Hành động và trạng thái |
 | --- | ---: | --- | --- |
-| QC1-01 | 24 | Chưa thể quy kết cho revision 1 vì phiếu không có hash; revision 1 và 3 có đủ bốn tag trên mỗi ảnh. | Không sửa tag; cần hash của bộ Đức đã kiểm để đối chiếu phần mâu thuẫn. |
+| QC1-01 | 24 | Phiếu không kèm hash nên không đủ căn cứ quy kết lỗi tag cho revision 1; revision 1 và 3 có đủ bốn tag trên mỗi ảnh. | Không sửa tag; cần hash của bộ Đức đã kiểm để đối chiếu phần mâu thuẫn. |
 | QC1-02 | 0 xác nhận riêng | Coach xác nhận các vạch thiếu trong A05/A06/A07/A09/A12 không nhìn thấy. | Giữ ngoại lệ; không tự vẽ thêm. |
 | QC1-03 | 5 | B06/B07 đã có `position=other` từ revision 1; yêu cầu gán R1 ở A09 mâu thuẫn với xác nhận coach. | Không đổi B06/B07; A09 không có R1 theo coach. |
-| QC1-04 | 0 xác nhận riêng | Chưa xác minh chiều lane A08; LINT vẫn cảnh báo. | Chưa sửa; cần đối chiếu ảnh. |
+| QC1-04 | 0 xác nhận riêng | Đang chờ đối chiếu chiều lane A08; LINT vẫn cảnh báo. | Chưa chỉnh sửa; cần đối chiếu ảnh. |
 | QC1-05 | 0 xác nhận | A09 còn cảnh báo hai lane `L1`; cách biểu diễn chưa được chốt. | Đã gộp cặp vạch đôi theo QC1; còn chờ kiểm tra lane đứt riêng. |
 | QC1-06 | 2 | Đồng ý với hai nhận xét cấu hình lane A09 trong phiếu. | Đã đặt vạch đôi thành `kind=double`, giữ lane còn lại `style=dashed`; position A09 theo xác nhận coach. |
 | QC1-07 | 0 xác nhận | Không có lỗi được xác nhận trong mẫu. | Không có chỉnh sửa theo mã này. |
 | QC1-08 | 6 | Đồng ý; sáu đèn A06/A08 đã được đối chiếu và đổi sang xanh. | Đã sửa trong revision 2 và giữ ở revision 3. |
 | QC1-09 | 0 xác nhận | Không có lỗi được xác nhận trong mẫu. | Không có chỉnh sửa theo mã này. |
 | QC1-10 | 0 xác nhận | Không có lỗi được xác nhận trong mẫu. | Không có chỉnh sửa theo mã này. |
-| QC1-11 | 0 xác nhận riêng | Không có lỗi fisheye được kết luận trong mẫu; cảnh báo hình học LINT là các mục riêng chưa xác minh. | Chưa sửa các đường cong chỉ dựa trên cảnh báo tự động. |
+| QC1-11 | 0 xác nhận riêng | Không có lỗi fisheye được kết luận trong mẫu của Đức; các cảnh báo hình học trên ZIP của tôi đã được rà overlay, không thấy lệch lớn hiển nhiên. | Không chỉnh sửa đường cong chỉ theo cảnh báo số điểm; cần GT để xác nhận ngưỡng 5 px. |
 | QC1-12 | 0 trong phạm vi mở file | Hai ZIP hiện tại mở được; phiếu không có manifest/hash để kiểm tra revision. | Không có lỗi mở file được ghi nhận; cần kèm manifest khi QC lại. |
 
 ### Đối chiếu revision được kiểm với ZIP hiện tại
 
-Phiếu không có manifest/hash; các ZIP người kiểm dùng không có trong workspace. Hash của bản sao revision 1 khớp với hash ghi trong manifest revision 1. LINT/XML revision 1 xác nhận đủ bốn tag trên mỗi ảnh và mọi lane B06/B07 có `position=other`, khác với các nhận xét tag/position trong phiếu. Tuy nhiên, revision 1 có sáu đèn giao thông ở A06/A08 mang màu `red` và các vấn đề lane A09 được nêu trong phiếu. Do đó, chỉ một phần nhận xét QC có thể đối chiếu với revision 1; chưa thể xác định vì sao các nhận xét còn lại khác.
+Phiếu không kèm manifest/hash; các ZIP người kiểm dùng không có trong workspace. Hash của bản sao revision 1 khớp với hash ghi trong manifest revision 1. LINT/XML revision 1 xác nhận đủ bốn tag trên mỗi ảnh và mọi lane B06/B07 có `position=other`, khác với các nhận xét tag/position trong phiếu. Tuy nhiên, revision 1 có sáu đèn giao thông ở A06/A08 mang màu `red` và các vấn đề lane A09 được nêu trong phiếu. Vì thiếu bản ZIP kèm hash của người kiểm, không đủ dữ liệu giải thích các khác biệt còn lại.
 
 SHA-256 revision 1 (bản sao lưu), revision 2 (bản sao lưu) và revision 3:
 
@@ -119,9 +119,9 @@ Ngày 20/11/2026, coach xác nhận các vạch L1/R1 còn thiếu dưới đây
 | A09 | R1 |
 | A12 | L1 |
 
-Phiếu QC1 tôi lập cho bạn được ghép: [Nguyễn Mạnh Đức (2A202603153)](./thanhquang-qc1-for-nguyenmanhduc.md). Kết quả kiểm mẫu 6 ảnh: Rework; 10 lỗi nặng, 6 lỗi chính và 4 lỗi nhẹ. Đây là QC bộ dữ liệu của bạn ấy, không phải phiếu QC nhận về cho bộ của tôi.
+Phiếu QC1 tôi lập cho bạn được ghép: [Nguyễn Mạnh Đức (2A202603153)](./thanhquang-qc1-for-nguyenmanhduc.md). Kết quả mẫu 6 ảnh: Rework; 10 lỗi nặng, 7 lỗi chính / 131 mục = 5.34%, 4 lỗi nhẹ. A02 được rà riêng làm ảnh đối chứng ngoài mẫu và không cộng vào tỉ lệ. Đây là QC bộ dữ liệu của bạn ấy, không phải phiếu QC nhận về cho bộ của tôi.
 
-Ca mơ hồ A01 trong phiếu của Đức (hai polyline L2 song song, cùng `kind=double`) chưa có lời đáp từ lead. Câu hỏi này vẫn mở; chưa ghi nhận câu trả lời hoặc gửi xác nhận thay người dùng.
+Ca mơ hồ A01 trong phiếu của Đức (hai polyline L2 song song, cùng `kind=double`) đang chờ lead phản hồi. Câu hỏi vẫn mở; không ghi câu trả lời thay người dùng.
 
 ## 5. Kiểm file export
 
@@ -134,25 +134,25 @@ Hai ZIP mở được bằng bộ đọc CVAT for images 1.1 của repository. `
 
 Revision 3 đã được nhập vào CVAT job #20; API xác nhận front có 113 shapes, 48 tag slots và trạng thái `completed` (12/12 frames). A09 trên CVAT hiện có một lane `L1/double` và một lane `L1/dashed`, không còn `R1`. Fisheye job #21 vẫn `completed` (8/8 frames), có 49 shapes và 32 tag slots.
 
-Kết quả LINT chạy trực tiếp trên hai ZIP revision 3: 20 ảnh, 12 cảnh báo, gồm 6 cảnh báo nặng QC1-02 (A05: L1/R1; A06: R1; A07: L1; A09: R1; A12: L1) đã được coach xác nhận ngoại lệ, và 6 cảnh báo chính chưa xác minh: chiều lane A08; hai lane cùng `L1` ở A09; số điểm theo cung ở B03 lane#1, B06 road_curb#4, B07 lane#4 và lane#5. Không còn cảnh báo nhẹ. LINT không kết luận chất lượng hình học; các trường hợp trên vẫn cần đối chiếu ảnh.
+Kết quả LINT trực tiếp trên hai ZIP revision 3: 20 ảnh, 12 cảnh báo; 6 cảnh báo nặng QC1-02 (A05: L1/R1; A06: R1; A07: L1; A09: R1; A12: L1) có xác nhận ngoại lệ của coach, 6 cảnh báo chính. Overlay A08 cho thấy nét gần ngang ở giao lộ nhưng chưa phân biệt được lane với vạch dừng; A09 vẫn có hai lane `L1`; B03/B06/B07 đã được rà trực quan, không thấy lệch lớn hiển nhiên nhưng LINT không đo sai số ≤5 px khi thiếu GT. Không còn cảnh báo nhẹ; không tự sửa hình học khi chưa đủ căn cứ.
 
 ## 6. Ảnh chụp màn hình
 
 Ảnh chụp CVAT có chứa khung hình BDD100K/WoodScape được giữ cục bộ để dùng trong bộ nộp theo kênh coach chỉ định; không commit lên repository công khai theo [quy định nguồn dữ liệu](./ATTRIBUTION.md). Các đường dẫn dưới đây tồn tại trên máy làm bài, không được đồng bộ lên GitHub.
 
-1. **Còn thiếu:** ảnh trang Project > Labels có cấu hình 6 label, thuộc tính và 4 tag. `labels-tags-task21.png` và `labels-tags-task21-lower.png` chỉ chụp sidebar trong Job, không thay thế được ảnh Project settings.
+1. **Cần đính kèm:** ảnh trang Project > Labels có cấu hình 6 label, thuộc tính và 4 tag. `labels-tags-task21.png` và `labels-tags-task21-lower.png` chỉ chụp sidebar trong Job, không thay thế được ảnh Project settings.
 2. Ảnh canvas front A01 trong task #20: `docs/images/submission-evidence/front-task20.png`.
 3. Ảnh canvas fisheye B01 trong task #21: `docs/images/submission-evidence/fisheye-task21.png`. Giá trị tag được xác minh trong XML.
 4. XML A01 trích từ ZIP front hiện tại: [annotations-front-A01.xml](./docs/images/submission-evidence/annotations-front-A01.xml), cùng [ảnh chụp XML](./docs/images/submission-evidence/xml-front-A01.png). XML có đủ 4 tag cùng các shape của ảnh; hai file XML minh chứng không chứa ảnh gốc.
 
-Ba loại minh chứng (front, fisheye, XML) hiện có trên máy. Ảnh Project settings chưa có. Bốn minh chứng phải được gửi kèm riêng cùng report qua kênh coach chấp nhận; không commit ảnh chứa dữ liệu nguồn lên repository công khai theo quy định nguồn dữ liệu.
+Ba loại minh chứng (front, fisheye, XML) hiện có trên máy. Ảnh Project Settings cần được lưu và gửi riêng cùng report qua kênh coach chấp nhận; không commit ảnh chứa dữ liệu nguồn lên repository công khai theo quy định nguồn dữ liệu.
 
 ## 7. Tự đánh giá
 
-QC1 đã phát hiện sáu màu đèn giao thông A06/A08 và các nét lane A09 cần chỉnh. Revision 3 giữ sáu màu đèn xanh, gộp vạch đôi A09, và bỏ gán `R1` theo xác nhận coach. Nếu giữ màu đèn sai hoặc tách vạch đôi thành hai lane độc lập, mô hình có thể học nhầm trạng thái đèn và cấu trúc làn. `position=other` trên các lane B06/B07 đã có từ revision 1. LINT revision 3 còn 12 cảnh báo: 6 QC1-02 có xác nhận ngoại lệ và 6 cảnh báo chính chưa xác minh. Cách kết thúc polyline và thao tác đặt tag vẫn chưa được người gán xác nhận; không suy đoán thay cho trải nghiệm thực tế. A09 còn cần người kiểm xác nhận vì LINT thấy hai lane `L1`.
+QC1 đã phát hiện sáu màu đèn giao thông A06/A08 và các nét lane A09 cần chỉnh. Revision 3 giữ sáu màu đèn xanh, gộp vạch đôi A09, và bỏ gán `R1` theo xác nhận coach. Nếu giữ màu đèn sai hoặc tách vạch đôi thành hai lane độc lập, mô hình có thể học nhầm trạng thái đèn và cấu trúc làn. `position=other` trên các lane B06/B07 đã có từ revision 1. LINT revision 3 còn 12 cảnh báo: 6 QC1-02 có xác nhận ngoại lệ; 6 cảnh báo chính đã được rà ảnh/overlay. A08 cần chốt lane hay vạch dừng, A09 cần chốt ý nghĩa hai lane `L1`; B03/B06/B07 không có lệch lớn hiển nhiên nhưng cần GT để xác nhận ngưỡng 5 px. Người gán không nhớ thao tác cụ thể kết thúc polyline/gán tag, nên report chỉ ghi hướng dẫn CVAT, không nhận đó là trải nghiệm cá nhân.
 
-Nhãn là Ground Truth dùng để huấn luyện/đánh giá mô hình. Nếu thiếu tag, pixel và shape không đổi nhưng dữ liệu sẽ mất khả năng phân nhóm theo camera, thời điểm và thời tiết; điều đó có thể che khuất chênh lệch hiệu năng giữa các điều kiện. Ở lần export hiện tại, cả 20 ảnh đã có đủ tag; chưa xác nhận các cảnh báo hình học còn lại đã được sửa.
+Nhãn là Ground Truth dùng để huấn luyện/đánh giá mô hình. Nếu thiếu tag, pixel và shape không đổi nhưng dữ liệu sẽ mất khả năng phân nhóm theo camera, thời điểm và thời tiết; điều đó có thể che khuất chênh lệch hiệu năng giữa các điều kiện. Ở lần export hiện tại, cả 20 ảnh đã có đủ tag. Các cảnh báo hình học vẫn còn trong ZIP revision 3; kết quả rà trực quan và giới hạn đo sai số được ghi ở mục 5.
 
 ## 8. (Tùy chọn, buffer) Từ polyline đến đích row-anchor
 
-Chưa thực hiện; đây là phần tùy chọn.
+Phần buffer là tùy chọn, không nằm trong 5 file bắt buộc.
