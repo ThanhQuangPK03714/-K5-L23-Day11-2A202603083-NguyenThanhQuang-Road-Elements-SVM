@@ -140,7 +140,7 @@ Kết quả LINT chạy trực tiếp trên hai ZIP revision 3: 20 ảnh, 12 c�
 
 Ảnh chụp CVAT có chứa khung hình BDD100K/WoodScape được giữ cục bộ để dùng trong bộ nộp theo kênh coach chỉ định; không commit lên repository công khai theo [quy định nguồn dữ liệu](./ATTRIBUTION.md). Các đường dẫn dưới đây tồn tại trên máy làm bài, không được đồng bộ lên GitHub.
 
-1. **Còn thiếu:** ảnh trang Project > Labels có cấu hình 6 label, thuộc tính và 4 tag. `labels-tags-task21.png` và `labels-tags-task21-lower.png` chỉ chụp sidebar trong Job, không thay thế được ảnh này; ảnh Project settings hiện có không hiển thị được nội dung cấu hình nên không dùng làm minh chứng.
+1. **Còn thiếu:** ảnh trang Project > Labels có cấu hình 6 label, thuộc tính và 4 tag. `labels-tags-task21.png` và `labels-tags-task21-lower.png` chỉ chụp sidebar trong Job, không thay thế được ảnh Project settings.
 2. Ảnh canvas front A01 trong task #20: `docs/images/submission-evidence/front-task20.png`.
 3. Ảnh canvas fisheye B01 trong task #21: `docs/images/submission-evidence/fisheye-task21.png`. Giá trị tag được xác minh trong XML.
 4. XML A01 trích từ ZIP front hiện tại: [annotations-front-A01.xml](./docs/images/submission-evidence/annotations-front-A01.xml), cùng [ảnh chụp XML](./docs/images/submission-evidence/xml-front-A01.png). XML có đủ 4 tag cùng các shape của ảnh; hai file XML minh chứng không chứa ảnh gốc.
