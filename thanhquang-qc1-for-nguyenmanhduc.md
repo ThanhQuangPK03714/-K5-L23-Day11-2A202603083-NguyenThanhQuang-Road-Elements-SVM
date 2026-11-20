@@ -12,6 +12,10 @@ Mẫu gồm ba ảnh front và ba ảnh fisheye, bao gồm front, fisheye rear v
 
 Lint toàn bộ hai ZIP báo 56 cảnh báo; phiếu này chỉ kết luận trên mẫu sáu ảnh đã chọn. Các cảnh báo ở ảnh ngoài mẫu chưa được xác minh trực quan và không được tính vào bảng mẫu dưới đây.
 
+## Ảnh đối chứng cho coach
+
+**A01: 0 lỗi đã xác nhận trong phạm vi kiểm của phiếu.** Ảnh có một câu hỏi chưa kết luận về hai polyline L2 song song và `kind=double` (xem mục Ca mơ hồ); câu hỏi này chưa được tính là lỗi. Coach cần kiểm tra A01 cùng câu hỏi đang mở trước khi xác nhận đây là ảnh không lỗi.
+
 ## Tổng hợp theo mã
 
 | Mã | Loại lỗi | Số mục kiểm | Số lỗi | Mức |

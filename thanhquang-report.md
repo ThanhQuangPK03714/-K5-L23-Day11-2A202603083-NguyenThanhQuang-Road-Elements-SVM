@@ -14,7 +14,7 @@ Số lần nộp lại sau Rework: 2 (revision 2 và revision 3; chưa có xác 
 
 | Mục | Trạng thái | Ghi chú |
 | --- | --- | --- |
-| Schema 6 label và 4 tag | Đã xác minh trong metadata của cả hai ZIP | Đây là bằng chứng schema được export, không thay thế ảnh chụp trang cấu hình Project. |
+| Schema 6 label và 4 tag | Đã đối chiếu output `py -3.11 -m road_lab.taxonomy`, metadata của cả hai ZIP và Project Raw | Đây là bằng chứng cấu hình, không thay thế ảnh chụp trang Project Settings. |
 | Cấu hình trực tiếp trên Project | Đã kiểm tra Project #2 trong CVAT | `d11_road_NguyenThanhQuang` có sáu label và bốn tag; tab Constructor xác nhận danh sách, tab Raw xác nhận kiểu và thuộc tính như bảng dưới. Ảnh chụp màn hình rõ làm minh chứng vẫn còn thiếu. |
 | Bốn tag trên ảnh | Đủ trên cả 20 ảnh | Đã đối chiếu XML export: mỗi ảnh có camera, timeofday, weather và source cùng giá trị. |
 
@@ -105,7 +105,7 @@ SHA-256 revision 1 (bản sao lưu), revision 2 (bản sao lưu) và revision 3:
 - Revision 3 front: `a8874c2f94c2f87a61fe139d65c307c91cbc4688d93e47a496cb5d7c55082f64`
 - Fisheye (không đổi giữa hai revision): `8bea2df53a59e7efa65d024dcfec3b7444023e2a48ac618e33f2ee3a43e5d25a`
 
-Revision 2 đổi sáu đèn được QC1 xác định là xanh tại A06/A08; gộp hai nét vạch đôi A09 thành một lane `position=L1`, `kind=double`, và đổi lane còn lại thành `position=R1`, `style=dashed`. Theo lựa chọn của người nộp, revision 3 khôi phục `position=L1` cho lane đứt theo xác nhận coach rằng A09 không có R1, đồng thời giữ `style=dashed` và vạch đôi đã gộp. Revision 3 cần được đồng bộ lại lên CVAT task front #20. LINT vẫn cảnh báo hai lane cùng `L1`; không tự điền lời đáp cho lead.
+Revision 2 đổi sáu đèn được QC1 xác định là xanh tại A06/A08; gộp hai nét vạch đôi A09 thành một lane `position=L1`, `kind=double`, và đổi lane còn lại thành `position=R1`, `style=dashed`. Theo lựa chọn của người nộp, revision 3 khôi phục `position=L1` cho lane đứt theo xác nhận coach rằng A09 không có R1, đồng thời giữ `style=dashed` và vạch đôi đã gộp. Revision 3 đã được nhập lại vào CVAT task front #20; API xác nhận job `completed` với 12/12 ảnh và 113 shapes. LINT vẫn cảnh báo hai lane cùng `L1`; không tự điền lời đáp cho lead.
 
 ### Xác nhận ngoại lệ QC1-02 cho lô của tôi
 
