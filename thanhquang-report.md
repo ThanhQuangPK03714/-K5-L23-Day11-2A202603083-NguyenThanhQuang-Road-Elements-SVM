@@ -8,7 +8,7 @@ Lần nộp (`revision` trong manifest): 3
 Thời điểm tạo manifest revision 3: 20/11/2026 23:50:05 (UTC+7; từ `created_at` trong manifest).
 Số lần nộp lại sau Rework: 2 (revision 2 và revision 3; đang chờ coach xác nhận kết quả sửa cuối).
 
-> Trạng thái: các file đã đồng bộ revision 3. Sáu cảnh báo chính đã được rà bằng overlay; A08/A09 còn cần chốt cách diễn giải, còn B03/B06/B07 không có lệch lớn hiển nhiên nhưng chưa thể đo ngưỡng 5 px nếu thiếu GT. Ảnh Project Settings ở tab Constructor đã lưu tại [project-settings-constructor.png](./docs/images/submission-evidence/project-settings-constructor.png), thể hiện đủ sáu label và bốn tag; tab Raw đã được kiểm tra trực tiếp nhưng chưa có ảnh chụp riêng. Revision 3 giữ coach exception A09 không có R1; position của lane này là `L1`, cùng `style=dashed` và vạch đôi đã gộp. LINT vẫn cảnh báo hai lane `L1` ở A09.
+> Trạng thái: các file đã đồng bộ revision 3. Sáu cảnh báo chính đã được rà bằng overlay; A08/A09 còn cần chốt cách diễn giải, còn B03/B06/B07 không có lệch lớn hiển nhiên nhưng chưa thể đo ngưỡng 5 px nếu thiếu GT. Ảnh Project Settings ở tab Constructor đã lưu tại [project-settings-constructor.png](./docs/images/submission-evidence/project-settings-constructor.png), thể hiện đủ sáu label và bốn tag; tab Raw đã được kiểm tra trực tiếp, ảnh chụp riêng cần được bổ sung. Revision 3 giữ coach exception A09 không có R1; position của lane này là `L1`, cùng `style=dashed` và vạch đôi đã gộp. LINT vẫn cảnh báo hai lane `L1` ở A09.
 
 ## 1. Kiểm project
 
