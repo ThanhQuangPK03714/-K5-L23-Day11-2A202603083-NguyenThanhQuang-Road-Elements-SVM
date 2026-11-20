@@ -31,8 +31,8 @@ Số lần nộp lại sau Rework: 2 (revision 2 và revision 3; chưa có xác 
 | `weather` | Tag; `value` = clear/overcast/rain/fog/other |
 | `source` | Tag; `value` = real/simulated |
 
-Cách kết thúc polyline mà người gán thực tế đã dùng: Người gán không nhớ thao tác/phím tắt; không ghi suy đoán thành trải nghiệm thực tế.
-Cách chọn giá trị tag trong giao diện: Chưa xác nhận thao tác đã dùng; XML và Project Raw xác nhận cấu hình `value` và các giá trị đã lưu.
+Cách hoàn tất polyline theo tài liệu CVAT: nhấn `N` lần nữa hoặc bấm `Done`; người gán không nhớ thao tác thực tế đã dùng nên đây là hướng dẫn, không phải xác nhận trải nghiệm ([CVAT docs](https://docs.cvat.ai/docs/annotation/manual-annotation/shapes/annotation-with-polylines/)).
+Cách gán tag theo tài liệu CVAT: chuyển menu trên cùng sang `Tag annotation`, chọn label rồi bấm `Plus`; người gán không nhớ thao tác thực tế đã dùng ([CVAT docs](https://docs.cvat.ai/docs/annotation/manual-annotation/modes/annotation-with-tags/)). XML và Project Raw xác nhận cấu hình `value` cùng các giá trị đã lưu.
 
 ## 2. Số lượng đã gán
 
