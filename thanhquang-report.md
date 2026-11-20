@@ -83,16 +83,16 @@ Kết quả lint sau export: 20 ảnh; 12 cảnh báo gồm 6 nặng (đều là
 
 ## 6. Ảnh chụp màn hình
 
-Ảnh chụp từ hai job CVAT và XML trích từ ZIP hiện tại:
+Ảnh chụp CVAT có chứa khung hình BDD100K/WoodScape được giữ cục bộ để dùng trong bộ nộp theo kênh coach chỉ định; không commit lên repository công khai theo [quy định nguồn dữ liệu](./ATTRIBUTION.md). Các đường dẫn dưới đây tồn tại trên máy làm bài, không được đồng bộ lên GitHub.
 
-1. Danh sách label/tag trong sidebar job #21: [phần trên](./docs/images/submission-evidence/labels-tags-task21.png) và [phần dưới](./docs/images/submission-evidence/labels-tags-task21-lower.png). Đây là danh sách ở job, không phải trang cấu hình project.
-2. Ảnh canvas front A01 trong task #20 (crop giao diện CVAT): ![Front A01 trong CVAT](./docs/images/submission-evidence/front-task20.png).
-3. Ảnh canvas fisheye B01 trong task #21: ![Fisheye B01 trong CVAT](./docs/images/submission-evidence/fisheye-task21.png). Đây là minh chứng giao diện; giá trị tag được xác minh trong XML.
-4. XML A01 trích từ ZIP front hiện tại: [annotations-front-A01.xml](./docs/images/submission-evidence/annotations-front-A01.xml). Có đủ 4 tag cùng các shape của ảnh.
+1. Danh sách label/tag trong sidebar job #21: `docs/images/submission-evidence/labels-tags-task21.png` và `docs/images/submission-evidence/labels-tags-task21-lower.png`. Đây là danh sách ở job, không phải trang cấu hình project.
+2. Ảnh canvas front A01 trong task #20: `docs/images/submission-evidence/front-task20.png`.
+3. Ảnh canvas fisheye B01 trong task #21: `docs/images/submission-evidence/fisheye-task21.png`. Giá trị tag được xác minh trong XML.
+4. XML A01 trích từ ZIP front hiện tại: [annotations-front-A01.xml](./docs/images/submission-evidence/annotations-front-A01.xml), cùng [ảnh chụp XML](./docs/images/submission-evidence/xml-front-A01.png). XML có đủ 4 tag cùng các shape của ảnh; hai file XML minh chứng không chứa ảnh gốc.
 
 ## 7. Tự đánh giá
 
-Quan sát khách quan từ ZIP hiện tại: cả 20 ảnh có đủ bốn tag; lint còn 12 gợi ý (6 nặng QC1-02 được coach xác nhận ngoại lệ, 6 chính chưa được xác minh) sau khi sửa `position=other` và các cờ `edge_zone`. Người gán nên tự-QC chiều polyline, vạch đôi và các đường fisheye. Việc các cảnh báo chính không chặn nộp theo checklist không đồng nghĩa chúng đã được xác nhận là đúng.
+Trong các vấn đề lặp lại được phát hiện khi tự-QC, lỗi thuộc tính `position` trên camera fisheye bên xuất hiện ở bốn lane tại B06/B07; các lane này đã được đặt về `other`. Nếu giữ L1/R1 cho camera bên, mô hình học thuộc tính vị trí làn sai theo góc camera. Cách tránh là kiểm tra ánh xạ camera → `position` cho từng ảnh trước export. Cả 20 ảnh hiện đủ bốn tag; lint còn 12 gợi ý (6 nặng QC1-02 được coach xác nhận ngoại lệ, 6 chính chưa được xác minh). Các cảnh báo chính không chặn nộp theo checklist nhưng chưa được xác nhận là đúng.
 
 Nhãn là Ground Truth dùng để huấn luyện/đánh giá mô hình. Nếu thiếu tag, pixel và shape không đổi nhưng dữ liệu sẽ mất khả năng phân nhóm theo camera, thời điểm và thời tiết; điều đó có thể che khuất chênh lệch hiệu năng giữa các điều kiện. Ở lần export hiện tại, cả 20 ảnh đã có đủ tag; chưa xác nhận các cảnh báo hình học còn lại đã được sửa.
 

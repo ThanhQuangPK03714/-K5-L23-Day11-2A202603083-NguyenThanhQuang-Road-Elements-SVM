@@ -7,3 +7,10 @@ submissions/
 out/
 *.zip
 .env
+
+# Local CVAT evidence screenshots contain licensed dataset frames.
+/docs/images/submission-evidence/front-task20.png
+/docs/images/submission-evidence/fisheye-task21.png
+/docs/images/submission-evidence/labels-tags-task21.png
+/docs/images/submission-evidence/labels-tags-task21-lower.png
+/docs/images/submission-evidence/nguyenmanhduc-*.png
