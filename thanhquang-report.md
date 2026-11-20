@@ -8,14 +8,14 @@ Lần nộp (`revision` trong manifest): 3
 Thời điểm tạo manifest revision 3: 20/11/2026 23:50:05 (UTC+7; từ `created_at` trong manifest).
 Số lần nộp lại sau Rework: 2 (revision 2 và revision 3; đang chờ coach xác nhận kết quả sửa cuối).
 
-> Trạng thái: các file đã đồng bộ revision 3. Sáu cảnh báo chính đã được rà bằng overlay; A08/A09 còn cần chốt cách diễn giải, còn B03/B06/B07 không có lệch lớn hiển nhiên nhưng chưa thể đo ngưỡng 5 px nếu thiếu GT. Ảnh Project Settings cần được lưu thành file đính kèm. Revision 3 giữ coach exception A09 không có R1; position của lane này là `L1`, cùng `style=dashed` và vạch đôi đã gộp. LINT vẫn cảnh báo hai lane `L1` ở A09.
+> Trạng thái: các file đã đồng bộ revision 3. Sáu cảnh báo chính đã được rà bằng overlay; A08/A09 còn cần chốt cách diễn giải, còn B03/B06/B07 không có lệch lớn hiển nhiên nhưng chưa thể đo ngưỡng 5 px nếu thiếu GT. Ảnh Project Settings ở tab Constructor đã lưu tại [project-settings-constructor.png](./docs/images/submission-evidence/project-settings-constructor.png), thể hiện đủ sáu label và bốn tag; tab Raw đã được kiểm tra trực tiếp nhưng chưa có ảnh chụp riêng. Revision 3 giữ coach exception A09 không có R1; position của lane này là `L1`, cùng `style=dashed` và vạch đôi đã gộp. LINT vẫn cảnh báo hai lane `L1` ở A09.
 
 ## 1. Kiểm project
 
 | Mục | Trạng thái | Ghi chú |
 | --- | --- | --- |
-| Schema 6 label và 4 tag | Đã đối chiếu output `py -3.11 -m road_lab.taxonomy`, metadata của cả hai ZIP và Project Raw | Đây là bằng chứng cấu hình, không thay thế ảnh chụp trang Project Settings. |
-| Cấu hình trực tiếp trên Project | Đã kiểm tra Project #2 trong CVAT | `d11_road_NguyenThanhQuang` có sáu label và bốn tag; tab Constructor xác nhận danh sách, tab Raw xác nhận kiểu và thuộc tính như bảng dưới. Cần lưu ảnh Project Settings để đính kèm làm minh chứng. |
+| Schema 6 label và 4 tag | Đã đối chiếu output `py -3.11 -m road_lab.taxonomy`, metadata của cả hai ZIP và Project Raw | Ảnh Constructor xác nhận danh sách; Raw và metadata xác nhận kiểu cùng thuộc tính. Ảnh Raw riêng cần được bổ sung. |
+| Cấu hình trực tiếp trên Project | Đã kiểm tra Project #2 trong CVAT | `d11_road_NguyenThanhQuang` có sáu label và bốn tag; [ảnh tab Constructor](./docs/images/submission-evidence/project-settings-constructor.png) xác nhận danh sách. Tab Raw xác nhận kiểu và thuộc tính như bảng dưới; ảnh Raw riêng cần được chụp bổ sung. |
 | Bốn tag trên ảnh | Đủ trên cả 20 ảnh | Đã đối chiếu XML export: mỗi ảnh có camera, timeofday, weather và source cùng giá trị. |
 
 | Label/tag | Kiểu và cấu hình theo metadata export |
@@ -138,14 +138,14 @@ Kết quả LINT trực tiếp trên hai ZIP revision 3: 20 ảnh, 12 cảnh bá
 
 ## 6. Ảnh chụp màn hình
 
-Ảnh chụp CVAT có chứa khung hình BDD100K/WoodScape được giữ cục bộ để dùng trong bộ nộp theo kênh coach chỉ định; không commit lên repository công khai theo [quy định nguồn dữ liệu](./ATTRIBUTION.md). Các đường dẫn dưới đây tồn tại trên máy làm bài, không được đồng bộ lên GitHub.
+Ảnh chụp CVAT có chứa khung hình BDD100K/WoodScape được giữ cục bộ để gửi theo kênh coach chỉ định; không commit lên repository công khai theo [quy định nguồn dữ liệu](./ATTRIBUTION.md). Ảnh Project Settings chỉ hiển thị cấu hình, không chứa khung hình dataset nên được commit cùng report.
 
-1. **Cần đính kèm:** ảnh trang Project > Labels có cấu hình 6 label, thuộc tính và 4 tag. `labels-tags-task21.png` và `labels-tags-task21-lower.png` chỉ chụp sidebar trong Job, không thay thế được ảnh Project settings.
+1. **Project Settings:** [ảnh tab Constructor](./docs/images/submission-evidence/project-settings-constructor.png) hiển thị đủ 6 label và 4 tag. Tab Raw đã được kiểm tra trực tiếp và đối chiếu với bảng cấu hình ở mục 1; ảnh Raw riêng vẫn cần chụp bổ sung. `labels-tags-task21.png` và `labels-tags-task21-lower.png` chỉ chụp sidebar trong Job.
 2. Ảnh canvas front A01 trong task #20: `docs/images/submission-evidence/front-task20.png`.
 3. Ảnh canvas fisheye B01 trong task #21: `docs/images/submission-evidence/fisheye-task21.png`. Giá trị tag được xác minh trong XML.
 4. XML A01 trích từ ZIP front hiện tại: [annotations-front-A01.xml](./docs/images/submission-evidence/annotations-front-A01.xml), cùng [ảnh chụp XML](./docs/images/submission-evidence/xml-front-A01.png). XML có đủ 4 tag cùng các shape của ảnh; hai file XML minh chứng không chứa ảnh gốc.
 
-Ba loại minh chứng (front, fisheye, XML) hiện có trên máy. Ảnh Project Settings cần được lưu và gửi riêng cùng report qua kênh coach chấp nhận; không commit ảnh chứa dữ liệu nguồn lên repository công khai theo quy định nguồn dữ liệu.
+Minh chứng Project Settings Constructor đã có trong repository. Ba loại minh chứng chứa dữ liệu (front, fisheye, XML) hiện có trên máy và cần gửi riêng cùng report qua kênh coach chấp nhận; không commit ảnh chứa dữ liệu nguồn lên repository công khai theo quy định nguồn dữ liệu. Ảnh chụp tab Raw cần được bổ sung vào bộ minh chứng.
 
 ## 7. Tự đánh giá
 
