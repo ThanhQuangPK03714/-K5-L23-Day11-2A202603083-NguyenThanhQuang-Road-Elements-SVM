@@ -121,7 +121,7 @@ Ngày 20/11/2026, coach xác nhận các vạch L1/R1 còn thiếu dưới đây
 
 Phiếu QC1 tôi lập cho bạn được ghép: [Nguyễn Mạnh Đức (2A202603153)](./thanhquang-qc1-for-nguyenmanhduc.md). Kết quả mẫu 6 ảnh: Rework; 10 lỗi nặng, 7 lỗi chính / 131 mục = 5.34%, 4 lỗi nhẹ. A02 được rà riêng làm ảnh đối chứng ngoài mẫu và không cộng vào tỉ lệ. Đây là QC bộ dữ liệu của bạn ấy, không phải phiếu QC nhận về cho bộ của tôi.
 
-Ca mơ hồ A01 trong phiếu của Đức (hai polyline L2 song song, cùng `kind=double`) đang chờ lead phản hồi. Câu hỏi vẫn mở; không ghi câu trả lời thay người dùng.
+A01 trong phiếu QC tôi lập cho Đức đã được đối chiếu với hướng dẫn bài: vạch đôi được biểu diễn bằng một polyline theo tâm cụm với `kind=double`; hai polyline song song cho cùng cụm được phân loại QC1-05. Đây là kết luận theo guideline, không phải câu trả lời thay coach.
 
 ## 5. Kiểm file export
 
