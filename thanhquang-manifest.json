@@ -3,13 +3,13 @@
   "format": "CVAT for images 1.1",
   "guideline": "Road v1.0",
   "name": "thanhquang",
-  "revision": 1,
-  "created_at": "2026-11-20T15:34:41+00:00",
+  "revision": 3,
+  "created_at": "2026-11-20T16:50:05+00:00",
   "files": [
     {
       "file": "thanhquang-front.zip",
-      "bytes": 45784,
-      "sha256": "04994b6b9e605289464d2415d138b2f34c403902b495223362037ece1779d214",
+      "bytes": 45379,
+      "sha256": "a8874c2f94c2f87a61fe139d65c307c91cbc4688d93e47a496cb5d7c55082f64",
       "contains_images": false,
       "images": 12,
       "images_unlabelled": 0,
@@ -17,7 +17,7 @@
       "shapes_by_label": {
         "crosswalk": 4,
         "drivable": 25,
-        "lane": 32,
+        "lane": 31,
         "road_curb": 20,
         "traffic_light": 19,
         "traffic_sign": 14
