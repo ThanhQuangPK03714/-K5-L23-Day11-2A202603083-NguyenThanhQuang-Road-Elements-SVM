@@ -119,7 +119,7 @@ Ngày 20/11/2026, coach xác nhận các vạch L1/R1 còn thiếu dưới đây
 | A09 | R1 |
 | A12 | L1 |
 
-Phiếu QC1 tôi lập cho bạn được ghép: [Nguyễn Mạnh Đức (2A202603153)](./thanhquang-qc1-for-nguyenmanhduc.md). Kết quả mẫu 6 ảnh: Rework; 10 lỗi nặng, 7 lỗi chính / 131 mục = 5.34%, 4 lỗi nhẹ. A02 được rà riêng làm ảnh đối chứng ngoài mẫu và không cộng vào tỉ lệ. Đây là QC bộ dữ liệu của bạn ấy, không phải phiếu QC nhận về cho bộ của tôi.
+Phiếu QC1 tôi lập cho bạn được ghép: [Nguyễn Mạnh Đức (2A202603153)](./thanhquang-qc1-for-nguyenmanhduc.md). Kết quả mẫu 6 ảnh trên các bản ZIP local đã rà: Rework; 10 lỗi nặng, 7 lỗi chính / 131 mục = 5.34%, 4 lỗi nhẹ. A02 được rà riêng ngoài mẫu, không cộng vào tỉ lệ. Manifest Đức revision 1 nhận sau đó khai báo hash/kích thước khác với các bản ZIP đã rà, vì vậy kết quả QC và ảnh A02 chưa được xác nhận cho đúng revision 1 đó; cần lấy ZIP khớp manifest để chạy lại QC. Đây là QC bộ dữ liệu của bạn ấy, không phải phiếu QC nhận về cho bộ của tôi.
 
 A01 trong phiếu QC tôi lập cho Đức đã được đối chiếu với hướng dẫn bài: vạch đôi được biểu diễn bằng một polyline theo tâm cụm với `kind=double`; hai polyline song song cho cùng cụm được phân loại QC1-05. Đây là kết luận theo guideline, không phải câu trả lời thay coach.
 

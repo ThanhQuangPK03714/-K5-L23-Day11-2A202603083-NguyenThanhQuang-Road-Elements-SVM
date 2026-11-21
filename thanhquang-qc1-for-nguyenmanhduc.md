@@ -4,7 +4,7 @@ Lô được kiểm (học viên): Nguyễn Mạnh Đức (`nguyenmanhduc`), MSS
 Người kiểm (học viên): Nguyễn Thanh Quang  
 Ngày: 2026-11-20  
 Phiên bản guideline: Road v1.0  
-File được kiểm: `nguyenmanhduc-front.zip`, `nguyenmanhduc-fisheye.zip`; phiếu không kèm manifest nên không gắn được kết quả với một revision cụ thể.
+File được rà trong phiếu này: các bản `nguyenmanhduc-front.zip` và `nguyenmanhduc-fisheye.zip` có trong workspace; hash thực tế ghi bên dưới. Manifest Đức revision 1 được cung cấp riêng sau đó, nhưng hash và kích thước của hai ZIP trong manifest không khớp các bản đã rà. Vì vậy kết quả mẫu trong phiếu chỉ áp dụng cho đúng các bản ZIP có hash ghi dưới đây, không thể gắn với manifest revision 1.
 Số ảnh mẫu: 6 (A01, A03, A08, B03, B05, B07); ảnh đối chứng bổ sung ngoài mẫu: A02.
 Số nhãn đã kiểm (shape + 4 tag slots/ảnh): 131 (107 shape + 24 tag slots).
 
@@ -17,11 +17,18 @@ Hai ZIP của Đức được tìm thấy trong thư mục dự án và được
 - Front: `049aeff6049e94b87dc902aa6a5c9040e8c820da48ad9442cfb364ec82153be3`
 - Fisheye: `221ba3ee68874fc228e4a6e7f28568dda6f7cc87b9f30e297b8c8f46e482f3d1`
 
-Phiếu QC gốc không ghi hash/manifest nên các hash trên nhận diện bản ZIP hiện có, không chứng minh đây chính xác là byte-for-byte các file Đức đã mở lúc kiểm.
+Manifest `nguyenmanhduc-manifest.json` nhận diện revision 1 với thông tin sau:
+
+| File | Bytes theo manifest | SHA-256 theo manifest | Bytes bản đã rà | SHA-256 bản đã rà | Khớp? |
+| --- | ---: | --- | ---: | --- | --- |
+| `nguyenmanhduc-front.zip` | 67574 | `0b4cf624248c6ece25c0c2564f97e3a872e3f424e3246de5ee5661ad3b587061` | 65123 | `049aeff6049e94b87dc902aa6a5c9040e8c820da48ad9442cfb364ec82153be3` | Không |
+| `nguyenmanhduc-fisheye.zip` | 66287 | `33db1801d1d30613f515e13dce3a6ff8080bf73a94961b1a7c216ccfd9a3d4f3` | 63241 | `221ba3ee68874fc228e4a6e7f28568dda6f7cc87b9f30e297b8c8f46e482f3d1` | Không |
+
+Manifest ghi LINT `0 nặng / 19 chính / 9 nhẹ`; các bản ZIP đã rà cho phiếu này phát sinh 56 cảnh báo LINT, trong đó có cảnh báo nặng. Sai khác hash/kích thước cùng số liệu LINT xác nhận đây không phải cùng cặp ZIP. Cần lấy đúng hai ZIP khớp manifest revision 1 rồi chạy lại mẫu QC và ảnh đối chứng A02 trước khi phiếu này được dùng để chấm hoặc làm căn cứ sửa revision đó. Phiếu QC gốc cũng không ghi hash/manifest, nên không thể xác nhận các bản local là đúng byte-for-byte những file Đức đã mở lúc lập phiếu.
 
 ## Ảnh đối chứng cho coach
 
-**A02: không phát hiện lỗi trong phạm vi rà soát bổ sung.** Ảnh có 7 shape và 4 tag; đủ tag `camera=front`, `timeofday=day`, `weather=clear`, `source=real`. LINT không báo lỗi trên A02; overlay được dựng từ ZIP và ảnh gốc rồi đối chiếu trực quan, các lane và vùng drivable bám theo mặt đường. A02 nằm ngoài mẫu 6 ảnh nên không cộng 11 mục của ảnh này vào mẫu số 131 hoặc tỉ lệ lỗi. Overlay để coach kiểm tra: [nguyenmanhduc-A02-control.png](./docs/images/submission-evidence/nguyenmanhduc-A02-control.png).
+**A02: không phát hiện lỗi trong phạm vi rà soát bổ sung trên các bản ZIP có hash ghi trong phiếu.** Ảnh có 7 shape và 4 tag; đủ tag `camera=front`, `timeofday=day`, `weather=clear`, `source=real`. LINT không báo lỗi trên A02; overlay được dựng từ ZIP và ảnh gốc rồi đối chiếu trực quan, các lane và vùng drivable bám theo mặt đường. A02 nằm ngoài mẫu 6 ảnh nên không cộng 11 mục của ảnh này vào mẫu số 131 hoặc tỉ lệ lỗi. Do ZIP đó không khớp hash manifest revision 1 Đức cung cấp riêng, A02 chưa thể được dùng làm ảnh sạch đối chứng cho revision 1 ấy. Overlay để coach kiểm tra: [nguyenmanhduc-A02-control.png](./docs/images/submission-evidence/nguyenmanhduc-A02-control.png).
 
 ## Tổng hợp theo mã
 
