@@ -24,7 +24,7 @@ Manifest `nguyenmanhduc-manifest.json` nhận diện revision 1 với thông tin
 | `nguyenmanhduc-front.zip` | 67574 | `0b4cf624248c6ece25c0c2564f97e3a872e3f424e3246de5ee5661ad3b587061` | 65123 | `049aeff6049e94b87dc902aa6a5c9040e8c820da48ad9442cfb364ec82153be3` | Không |
 | `nguyenmanhduc-fisheye.zip` | 66287 | `33db1801d1d30613f515e13dce3a6ff8080bf73a94961b1a7c216ccfd9a3d4f3` | 63241 | `221ba3ee68874fc228e4a6e7f28568dda6f7cc87b9f30e297b8c8f46e482f3d1` | Không |
 
-Manifest ghi LINT `0 nặng / 19 chính / 9 nhẹ`; các bản ZIP đã rà cho phiếu này phát sinh 56 cảnh báo LINT, trong đó có cảnh báo nặng. Sai khác hash/kích thước cùng số liệu LINT xác nhận đây không phải cùng cặp ZIP. Cần lấy đúng hai ZIP khớp manifest revision 1 rồi chạy lại mẫu QC và ảnh đối chứng A02 trước khi phiếu này được dùng để chấm hoặc làm căn cứ sửa revision đó. Phiếu QC gốc cũng không ghi hash/manifest, nên không thể xác nhận các bản local là đúng byte-for-byte những file Đức đã mở lúc lập phiếu.
+Manifest ghi LINT `0 nặng / 19 chính / 9 nhẹ`; LINT hai bản ZIP local đã rà cho phiếu này báo `18 nặng / 26 chính / 12 nhẹ` (56 cảnh báo). Sai khác hash/kích thước cùng số liệu LINT xác nhận đây không phải cùng cặp ZIP. Cần lấy đúng hai ZIP khớp manifest revision 1 rồi chạy lại mẫu QC và ảnh đối chứng A02 trước khi phiếu này được dùng để chấm hoặc làm căn cứ sửa revision đó. Phiếu QC gốc cũng không ghi hash/manifest, nên không thể xác nhận các bản local là đúng byte-for-byte những file Đức đã mở lúc lập phiếu.
 
 ## Ảnh đối chứng cho coach
 
